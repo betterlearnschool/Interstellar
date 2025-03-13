@@ -12,42 +12,102 @@
     <link rel="stylesheet" href="/assets/css/nav.css?v=01" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734"
      crossorigin="anonymous"></script>
+
+    <style>
+      body.disable-clicks {
+        pointer-events: none;
+      }
+
+      .allow-click {
+        pointer-events: auto;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: none;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      .toggle-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 10000;
+      }
+    </style>
+
   </head>
   <body class="center" onload="SplashT">
     <div class="f-nav"></div>
     <div id="particles-js">
       <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
       <div class="main">
-<h1 class="title">&#73;&#110;&#116;&#101;&#114;&#115;&#116;&#101;&#108;&#108;&#97;&#114;</h1>
+        <h1 class="title">&#73;&#110;&#116;&#101;&#114;&#115;&#116;&#101;&#108;&#108;&#97;&#114;</h1>
         <p id="splash"></p>
         <div class="search-container">
           <form id="fv" method="POST">
-            <input
-              id="iv"
-              class="search-home"
-              placeholder="Search or enter a URL"
-              type="text" />
+            <input id="iv" class="search-home" placeholder="Search or enter a URL" type="text" />
           </form>
         </div>
       </div>
     </div>
+
+    <!-- Click Toggle Overlay -->
+    <div id="overlay" class="overlay"></div>
+    <button id="toggleButton" class="toggle-btn allow-click">Disable Clicks</button>
+
     <script src="assets/js/i.js?v=03"></script>
     <script src="/assets/js/home.js?v=00"></script>
     <script src="./assets/ultra/bundle.js?v=10-02-2024"></script>
     <script src="./assets/ultra/config.js?v=10-02-2024"></script>
     <script src="assets/js/f.js"></script>
     <script src="/assets/js/mv.js?v=003"></script>
-    <!-- DO NOT REMOVE-->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
     <script>
-      window.dataLayer = window.dataLayer || []
+      window.dataLayer = window.dataLayer || [];
       function gtag() {
-        dataLayer.push(arguments)
+        dataLayer.push(arguments);
       }
-      gtag("js", new Date())
-
-      gtag("config", "G-WKJQ5QHQTJ")
+      gtag("js", new Date());
+      gtag("config", "G-WKJQ5QHQTJ");
     </script>
-    <!-- DO NOT REMOVE-->
+
+    <!-- Disable Clicks Script -->
+    <script>
+      const toggleButton = document.getElementById('toggleButton');
+      const overlay = document.getElementById('overlay');
+      let clicksDisabled = false;
+
+      toggleButton.addEventListener('click', () => {
+        clicksDisabled = !clicksDisabled;
+        
+        if (clicksDisabled) {
+          document.body.classList.add('disable-clicks');
+          overlay.classList.add('active');
+          toggleButton.textContent = 'Enable Clicks';
+        } else {
+          document.body.classList.remove('disable-clicks');
+          overlay.classList.remove('active');
+          toggleButton.textContent = 'Disable Clicks';
+        }
+      });
+    </script>
+    
   </body>
 </html>
