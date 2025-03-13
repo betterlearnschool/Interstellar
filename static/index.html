@@ -14,40 +14,21 @@
      crossorigin="anonymous"></script>
 
     <style>
-      body.disable-clicks {
-        pointer-events: none;
-      }
-
-      .allow-click {
-        pointer-events: auto;
-      }
-
+      /* Overlay to cover the entire screen */
       .overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 9999;
-        display: none;
-      }
-
-      .overlay.active {
-        display: block;
-      }
-
-      .toggle-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        z-index: 10000;
+        background: black;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
       }
     </style>
 
@@ -67,9 +48,10 @@
       </div>
     </div>
 
-    <!-- Click Toggle Overlay -->
-    <div id="overlay" class="overlay"></div>
-    <button id="toggleButton" class="toggle-btn allow-click">Disable Clicks</button>
+    <!-- Permanent Overlay on Top of Everything -->
+    <div class="overlay">
+      Just keep this open
+    </div>
 
     <script src="assets/js/i.js?v=03"></script>
     <script src="/assets/js/home.js?v=00"></script>
@@ -88,26 +70,5 @@
       gtag("config", "G-WKJQ5QHQTJ");
     </script>
 
-    <!-- Disable Clicks Script -->
-    <script>
-      const toggleButton = document.getElementById('toggleButton');
-      const overlay = document.getElementById('overlay');
-      let clicksDisabled = false;
-
-      toggleButton.addEventListener('click', () => {
-        clicksDisabled = !clicksDisabled;
-        
-        if (clicksDisabled) {
-          document.body.classList.add('disable-clicks');
-          overlay.classList.add('active');
-          toggleButton.textContent = 'Enable Clicks';
-        } else {
-          document.body.classList.remove('disable-clicks');
-          overlay.classList.remove('active');
-          toggleButton.textContent = 'Disable Clicks';
-        }
-      });
-    </script>
-    
   </body>
 </html>
